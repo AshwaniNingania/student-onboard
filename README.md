@@ -1,4 +1,4 @@
-# [Application](https://ashwaniningania.github.io/student-onboard) Student Management System
+# [Student Management System](https://ashwaniningania.github.io/student-onboard)
 
 ***
 ## Created By 
