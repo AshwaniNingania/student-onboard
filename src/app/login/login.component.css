@@ -3,6 +3,7 @@
 	margin: auto;
 	padding: 0% 5% 5% 5%;
 }
+
 .login-card{
 	margin-top: 5%;
 	margin-bottom: 5%;
@@ -12,4 +13,10 @@
 
 .error {
     border-color: #dc3545
+}
+
+@media (max-width: 768px) {
+	.align-center {
+		width: 100%;
+	}
 }
