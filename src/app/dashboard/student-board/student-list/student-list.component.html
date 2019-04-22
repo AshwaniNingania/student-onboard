@@ -1,0 +1,45 @@
+<!-- Created by -- Ashwani (3146451) -->
+<div class="student-board">
+  <div class="student-list row">
+    <div class="col-sm-7"></div>
+    <select class="col-sm-2 form-control" [(ngModel)]="filterCategory">
+      <option value="All" selected>All</option>
+      <option value="National">National</option>
+      <option value="International">International</option>
+    </select>
+    <!-- <div class="col-sm-6"></div> -->
+    <div class="col-sm-3">
+     <input class="form-control" placeholder="search by name" [(ngModel)]="searchFilterText">
+    </div>
+  </div>  
+  <div class="student-list row">
+    <div *ngFor="let student of students | studentsFilter : filterCategory : searchFilterText; let i = index" class="col-sm-6">
+        <div class="card">
+          <div class="card-header" [ngClass]="{'national-header': student.category == 'National', 'international-header': student.category == 'International'}">
+              <b>{{student.name}}</b><i>  ({{student.email}})</i>
+              <i class="far fa-trash-alt fa-lg delete-student"  (click)="openDeletePopup(student)"></i>
+              <i class="far fa-eye fa-lg view-student" (click)="viewStudent(student.id)"></i>
+              <i class="fas fa-user-edit fa-lg edit-student" (click)="updateStudent(student.id)"></i>
+            </div>
+            <div class="card-body" [ngClass]="{'national-body': student.category == 'National', 'international-body': student.category == 'International'}">
+              <div class="row">
+                <p *ngIf="student.dob" class="col-sm-10"><span>Date of birth: </span><i> {{student.dob | dateOfBirth | date:'longDate'}}</i></p>
+              </div>
+              <div class="row">
+                <p *ngIf="student.fatherName" class="col-sm-6"><span>Father's name: </span><i> {{student.fatherName}}</i></p>
+                <p *ngIf="student.motherName" class="col-sm-6"><span>Mother's name: </span><i> {{student.motherName}}</i></p>
+              </div>
+              <div class="row">
+                <p class="col-sm-12"><span>Document verified: </span><i> {{student.documents | documents}}</i></p>
+              </div>
+              <div class="row">
+                <p *ngIf="student.lastClassScore" class="col-sm-12"><span>Score: </span><i> {{student.lastClassScore}}%</i></p>
+              </div>
+              <blockquote class="blockquote mb-0">
+                <footer class="blockquote-footer"><cite title="Source Title"><b>{{student.category}}</b></cite></footer>
+              </blockquote>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

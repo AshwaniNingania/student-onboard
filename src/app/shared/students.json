@@ -1,0 +1,68 @@
+[
+  {
+    "name": "Ashwani Yadav",
+    "email": "ashwani@gmail.com",
+    "category": "National",
+    "documents": [
+      true,
+      true,
+      true,
+      false,
+      false,
+      true
+    ],
+    "dob": {
+      "year": 1994,
+      "month": 10,
+      "day": 20
+    },
+    "fatherName": "Anil",
+    "motherName": "",
+    "lastClassScore": 12,
+    "id": 1
+  },
+  {
+    "id": 2,
+    "name": "Ravi",
+    "email": "ravi@gmail.com",
+    "category": "International",
+    "fatherName": "Ramesh",
+    "motherName": "Sunita",
+    "lastClassScore": 90,
+    "dob": {
+      "year": 1999,
+      "month": 4,
+      "day": 20
+    },
+    "documents": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Nikhil",
+    "email": "nikhil@nagarro.com",
+    "category": "National",
+    "documents": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "dob": {
+      "year": 1989,
+      "month": 4,
+      "day": 2
+    },
+    "fatherName": "ABC",
+    "motherName": "XYZ",
+    "lastClassScore": 12.5
+  }
+]

@@ -1,0 +1,25 @@
+.student-board {
+	/* width: 80%; */
+    margin: auto;
+    /* margin-top: 2%; */
+	margin-bottom: 10%;
+    /* border-radius: 15px; */
+    border: 1px solid #dee2e6;
+    /* overflow-x: auto;
+    overflow-y: auto;
+    overflow: scroll; 
+    height: 390px; */
+    background-color: rgb(250, 250, 250)
+}
+
+.student-form {
+    margin: 5% 5% 5% 15%;
+}
+
+.reset {
+    margin-left: 5%;
+}
+
+.error {
+    border-color: #dc3545
+}

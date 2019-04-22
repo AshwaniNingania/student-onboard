@@ -1,0 +1,20 @@
+<!-- Created by --Ashwani (3146451) -->
+<div class="student-board">
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/onboard" routerLinkActive="active"
+         [ngClass]="{'active': viewActive.isActive || updateActive.isActive || homeActive.isActive}">
+        <h3>Onboarding Form</h3>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/list" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+        <h3>Student List</h3>
+      </a>
+    </li>
+    <a routerLink="" routerLinkActive #homeActive="routerLinkActive" style="display: none"></a>
+    <a routerLink="/onboard/:id" routerLinkActive #updateActive="routerLinkActive" style="display: none"></a>
+    <a routerLink="/onboard/:view/:id" routerLinkActive #viewActive="routerLinkActive" style="display: none"></a>
+  </ul>
+  <router-outlet></router-outlet>
+</div>

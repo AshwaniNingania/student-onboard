@@ -1,0 +1,99 @@
+<!-- Created by -- Ashwani (3146451) -->
+<div class="student-board">
+  <div class="student-form">
+    <form [formGroup]="studentFormData" (ngSubmit)="createUpdateStudentData()">
+
+      <div class="form-group row">
+        <label for="name" class="col-sm-2 col-form-label">Student Name<span class="text-danger">*</span></label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" formControlName="name" id="name" placeholder="name"
+            [ngClass]="{'error': studentFormData.controls.name.invalid && (studentFormData.controls.name.dirty || studentFormData.controls.name.touched)}">
+          <div class="text-danger"  *ngIf="studentFormData.controls.name.invalid && (studentFormData.controls.name.dirty || studentFormData.controls.name.touched)">Please enter 3 to 50 characters.</div> 
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="email" class="col-sm-2 col-form-label">Email Id <span class="text-danger">*</span></label>
+        <div class="col-sm-6">
+          <input type="email" class="form-control" formControlName="email" id="email" placeholder="abc@g.com"
+            [ngClass]="{'error': studentFormData.controls.email.invalid && (studentFormData.controls.email.dirty || studentFormData.controls.email.touched)}">
+          <div class="text-danger"  *ngIf="studentFormData.controls.email.invalid && (studentFormData.controls.email.dirty || studentFormData.controls.email.touched)">Please enter a valid email.</div> 
+        </div>
+      </div>
+
+      <div class="form-group row">
+          <label for="category" class="col-sm-2 col-form-label">Category<span class="text-danger">*</span></label>
+          <div class="col-sm-6">
+            <select formControlName="category" id="category" class="form-control" (change)="categoryChanged()">
+              <option value="National">National</option>
+              <option value="International">International</option>
+            </select>
+          </div>
+      </div>
+
+      <div class="form-group row">
+          <label for="documents" class="col-sm-2">Documents</label>
+          <div class="col-sm-6">
+            <div class="form-check" formArrayName="documents" *ngFor="let category of getCategoryControls(); let i = index">
+              <input class="form-check-input" type="checkbox" binary="false" [formControlName]="i"/>
+              <label class="form-check-label" *ngIf="categories[i]"> {{categories[i].name}} <span *ngIf="categories[i].required || studentFormData.controls.category.value === 'International'" class="text-danger">*</span></label>
+            </div>
+            <div class="text-danger"  *ngIf="studentFormData.controls.documents.invalid && (studentFormData.controls.documents.dirty || studentFormData.controls.documents.touched)">Please check all mandotory documents.</div> 
+          </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="dob" class="col-sm-2 col-form-label">Date of Birth <span class="text-danger">*</span></label>
+        <div class="col-sm-6">
+          <div class="input-group">
+            <input class="form-control" placeholder="yyyy-mm-dd" formControlName="dob" ngbDatepicker #d="ngbDatepicker"
+             [ngClass]="{'error': studentFormData.controls.dob.invalid && (studentFormData.controls.dob.dirty || studentFormData.controls.dob.touched)}">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button" [disabled]="studentView == 'view'"
+                [ngClass]="{'error': studentFormData.controls.dob.invalid && (studentFormData.controls.dob.dirty || studentFormData.controls.dob.touched)}">
+              <i class="fa fa-calendar-alt" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+          <div class="text-danger"  *ngIf="studentFormData.controls.dob.invalid && (studentFormData.controls.dob.dirty || studentFormData.controls.dob.touched)">Please enter a valid date.</div> 
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="fatherName" class="col-sm-2 col-form-label">Father's Name<span class="text-danger">*</span></label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" formControlName="fatherName" id="fatherName" placeholder="father's name"
+            [ngClass]="{'error': studentFormData.controls.fatherName.invalid && (studentFormData.controls.fatherName.dirty || studentFormData.controls.fatherName.touched)}">
+          <div class="text-danger"  *ngIf="studentFormData.controls.fatherName.invalid && (studentFormData.controls.fatherName.dirty || studentFormData.controls.fatherName.touched)">Please enter 3 to 50 characters.</div> 
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="motherName" class="col-sm-2 col-form-label">Mother's Name</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" formControlName="motherName" id="motherName" placeholder="mother's name"
+            [ngClass]="{'error': studentFormData.controls.motherName.invalid && (studentFormData.controls.motherName.dirty || studentFormData.controls.motherName.touched)}">
+          <div class="text-danger"  *ngIf="studentFormData.controls.motherName.invalid && (studentFormData.controls.motherName.dirty || studentFormData.controls.motherName.touched)">Please enter 3 to 50 characters.</div> 
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="lastClassScore" class="col-sm-2 col-form-label">Last Class Score<span class="text-danger">*</span></label>
+        <div class="col-sm-6">
+          <input type="number" class="form-control" formControlName="lastClassScore" id="lastClassScore" placeholder="%(marks)"
+          [ngClass]="{'error': studentFormData.controls.lastClassScore.invalid && (studentFormData.controls.lastClassScore.dirty || studentFormData.controls.lastClassScore.touched)}">
+        <div class="text-danger"  *ngIf="studentFormData.controls.lastClassScore.invalid && (studentFormData.controls.lastClassScore.dirty || studentFormData.controls.lastClassScore.touched)">Please enter last class score(0 to 100 %).</div> 
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-6">
+          <button type="submit" class="btn btn-primary" [disabled]="!studentFormData.valid" *ngIf="!studentId">Onboard</button>
+          <button type="submit" class="btn btn-primary" [disabled]="!studentFormData.valid" *ngIf="studentId">Update</button>
+          <button type="reset" class="btn btn-secondary reset" [disabled]="studentView == 'view'">Reset</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

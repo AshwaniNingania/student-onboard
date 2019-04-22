@@ -1,0 +1,25 @@
+.student-board {
+	width: 80%;
+    margin: auto;
+    margin-top: 90px;
+	margin-bottom: 2%;
+    border-radius: 15px;
+}
+
+.active {
+    background-color : #95bf98 !important;
+}
+
+a {
+    color : black;
+    padding: 0.5rem 3rem;
+}
+
+.nav-link:hover {
+    border-width: 0.1ch;
+    border-color: grey;
+}
+
+.nav-link {
+    background-color : rgb(245, 243, 243);
+}
